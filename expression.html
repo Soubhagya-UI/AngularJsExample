@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expression</title>
+</head>
+<body>
+
+    <div ng-app='myApp'>
+        <div>
+            <b>Expressions</b> : Expressions are used to bind application data to html. 
+            Expressions are written inside double braces like {{ syntax }}. 
+            Expressions behaves in same way as ng-bind directives. 
+            AngularJS application expressions are pure javascript expressions and outputs the data where they are used.
+        </div>
+        <hr>
+        <div ng-controller='myCtrl'>
+            <h3>{{heading}}</h3>
+        </div>
+        <div>
+            <div ng-init="quantity=30;cost=20;names = {fname:'Soubhagya',lname:'Jena'};marks=[10,40,60,80]">
+                <p>Total cost is = {{quantity*cost}}</p>
+                <p>Full Name is = {{names.fname+" "+names.lname}}</p>
+                <p>3rd Mark is : {{marks[2]}}</p>
+                <p>Marks are : 
+                    <ul ng-repeat="x in marks">
+                        <li>{{x}}</li>
+                    </ul>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl',function($scope){
+            $scope.heading = 'Expression'
+        })
+
+    </script>
+</body>
+</html>

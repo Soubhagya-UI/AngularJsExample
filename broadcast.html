@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <style>
+        div{
+            border: 1px solid red;
+            padding: 1px;
+        }
+    </style>
+
+</head>
+<body ng-app='myApp'>
+        <div class="example-box" id="box1" ng-controller="ctrl1">
+            <h3>Controller 1</h3>
+                <button ng-click="bradcastEvent()">Broadcast Event</button> 
+            <p>{{mess}}</p>
+                
+            <div class="example-box" id="box2" ng-controller="ctrl2">
+                <h3>Controller 2</h3>
+                <p>{{mess2}}</p>
+            </div>
+        </div>
+
+        <script>
+            var app = angular.module('myApp',[]);
+            app.controller('ctrl1',function($scope){
+                $scope.bradcastEvent = function(){
+                    $scope.$broadcast('myevent',{mess:'Hello I am parent'})
+                }
+            })
+            app.controller('ctrl2',function($scope){
+                $scope.$on('myevent',function(e,res){
+                    $scope.mess2 = res.mess
+                })
+            })
+        </script>
+</body>
+</html>

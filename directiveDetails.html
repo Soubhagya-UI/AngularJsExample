@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Directive</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <style>
+        tr,td,table{
+            border: 1px solid green;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        AngularJS lets you extend HTML with new attributes called Directives.
+        AngularJS has a set of built-in directives which offers functionality to your applications.
+    </div>
+    <div ng-app='myApp'>
+        <woww></woww>
+        <p woww></p>
+        <p class='newd'></p>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>E</td>
+                <td>for Element name</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>for Attribute</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>for Class</td>
+            </tr>
+            <tr>
+                <td>M</td>
+                <td>for Comment</td>
+            </tr>
+        </table>   
+    </div>
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.directive('woww',function(){
+            return{
+                template:"<h1>Soubhagya is a good boy<h1/>"
+            }
+        })
+        app.directive('newd',function(){
+            return{
+                restrict:'C',
+                template:'<h2>Ohh! Really Nice</h2>'
+            }
+        })
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Http Services</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app='myApp'>
+        <div ng-controller='myCtrl'>
+            <div>Login Id - {{myData.login}}</div>
+        </div>
+        <div ng-controller='myctrl2'>
+            <ul ng-repeat='x in wowo | limitTo:10'>
+                <li>{{x.title}}</li>
+            </ul>
+        </div>
+        <div ng-controller='myctrl3'>
+            <table>
+                <tr ng-repeat='y in somedata | limitTo:1'>
+                    <th ng-repeat='(key,val) in y'>{{val}}</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl',function($scope,$http){
+            $http.get('https://api.github.com/users/Soubhagya-UI').then(function(res){
+                $scope.myData = res.data
+            })
+        })
+        app.controller('myctrl2',function($scope,$http){
+            $http.get('https://jsonplaceholder.typicode.com/posts').then(function(newRes){
+                $scope.wowo = newRes.data
+            })
+        })
+        app.controller('myctrl3',function($scope,$http){
+            $http({
+                method:'GET',
+                url:'https://www.w3schools.com/angular/customers.php'
+            }).then(function(results){
+                $scope.somedata = results.data
+                console.log($scope.somedata)
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Emit Method</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+
+</head>
+<body>
+    <div ng-app='myApp'>
+        <div ng-controller='myctrl1'>
+            {{mess2}}
+            <div ng-controller='myctrl2'>
+                {{mess}}
+                <button ng-click='eventHandler()'>Emit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myctrl1',function($scope){
+            $scope.$on('par',function(e,res){
+                $scope.mess2 = res.mess             //check  this line 
+            })
+        })
+        app.controller('myctrl2',function($scope){
+            $scope.eventHandler = function(){
+                $scope.$emit('par',{mess:'I am child ctrl'})
+            }
+        })
+    </script>
+</body>
+</html>

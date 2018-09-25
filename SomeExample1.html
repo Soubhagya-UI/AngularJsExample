@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Generating Table</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+
+</head>
+<body>
+
+    <div ng-app='myApp'>
+        <div ng-controller='myCtrl'>
+            <table>
+                <tr ng-repeat='x in items | limitTo:1'>
+                    <th ng-repeat='(key,val) in x'>{{key}}</th>
+                </tr>
+                <tr>
+                <tr ng-repeat="x in items">
+                    <td ng-repeat="(key, val) in x">
+                        {{val}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    
+    
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl',function($scope){
+            $scope.items = [
+                        {
+                        Name: "Soap",Price: "25",Quantity: "10"
+                        }, 
+                        {
+                        Name: "Bag",Price: "100",Quantity: "15"
+                        }, 
+                        {
+                        Name: "Pen",Price: "15",Quantity: "13"
+                        }
+                     ]
+        })
+    </script>
+</body>
+</html>
